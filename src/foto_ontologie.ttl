@@ -3,13 +3,26 @@
 @prefix owl:	<http://www.w3.org/2002/07/owl#>
 @prefix it:	<http:/itech.ugent.be/ontology/17#>
 
-it:Author	rdf:type	owl:Class.
-it:Content	rdf:type	owl:Class.
-it:Theme	rdf:type	owl:Class.
-it:Location	rdf:type	owl:Class.
-it:Date		rdf:type	owl:Class.
-it:Description	rdf:type	owl:Class.	
-it:Title	rdf:type	owl:Class.
+it:Author	rdf:type	owl:Class ;
+		rdfs:comment	"Dit is de maker van de foto".
+
+it:Content	rdf:type	owl:Class ;
+		rdfs:comment	"Wat er te zien is op de foto".
+
+it:Theme	rdf:type	owl:Class ;
+		rdfs:comment	"Het thema van de foto".
+
+it:Location	rdf:type	owl:Class ;
+		rdfs:comment	"De plaats waar de foto genomen werd".
+
+it:Date		rdf:type	owl:Class ;
+		rdfs:comment	"De datum waarop de foto genomen werd".
+
+it:Description	rdf:type	owl:Class ;
+		rdfs:comment	"Dit is een korte beschrijving van de foto".
+	
+it:Title	rdf:type	owl:Class ;
+		rdfs:comment	"Dit is de titel van de foto".
 
 
 
