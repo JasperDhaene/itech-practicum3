@@ -2,6 +2,7 @@
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 @prefix owl:	<http://www.w3.org/2002/07/owl#>
 @prefix it:	<http:/itech.ugent.be/ontology/17#>
+@prefix cat:	<http://dbpedia.org/resource/Category:#>
 
 it:Author	rdf:type	owl:Class ;
 		rdfs:comment	"Dit is de maker van de foto".
@@ -10,7 +11,16 @@ it:Content	rdf:type	owl:Class ;
 		rdfs:comment	"Wat er te zien is op de foto".
 
 it:Theme	rdf:type	owl:Class ;
-		rdfs:comment	"Het thema van de foto".
+		rdfs:comment	"Het thema van de foto" ;
+		owl:oneOf	( 	cat:People
+					cat:Animals
+					cat:Architecture
+					cat:Nature
+					cat:Politics
+					cat:Humor
+					cat:Culture
+					cat:News
+				).
 
 it:Location	rdf:type	owl:Class ;
 		rdfs:comment	"De plaats waar de foto genomen werd".
