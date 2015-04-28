@@ -1,0 +1,18 @@
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+@prefix owl:	<http://www.w3.org/2002/07/owl#>
+@prefix it:	<http:/itech.ugent.be/ontology/17#>
+
+it:Author	rdf:type	owl:Class.
+it:Content	rdf:type	owl:Class.
+it:Theme	rdf:type	owl:Class.
+it:Location	rdf:type	owl:Class.
+it:Date		rdf:type	owl:Class.
+it:Description	rdf:type	owl:Class.	
+it:Title	rdf:type	owl:Class.
+
+
+
+
+
+
