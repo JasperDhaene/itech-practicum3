@@ -1,18 +1,31 @@
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 @prefix owl:	<http://www.w3.org/2002/07/owl#>
-@prefix it:	<http:/itech.ugent.be/ontology/17#>
-@prefix cat:	<http://dbpedia.org/resource/Category:#>
+@prefix foaf: 	<http://xmlns.com/foaf/0.1/>
+@prefix it:	<http:/itech.ugent.be/ontology/17/>
+@prefix cat:	<http://dbpedia.org/resource/Category:>
+@prefix ont:	<http://dbpedia.org/ontology/>
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#>
 
-it:Author	rdf:type	owl:Class ;
-		rdfs:comment	"Dit is de maker van de foto".
+it:DigitalPhoto		rdf:type	owl:Class ;
+			rdfs:comment	"Class that represents a digital photograph"@en .
 
-it:Content	rdf:type	owl:Class ;
-		rdfs:comment	"Wat er te zien is op de foto".
 
-it:Theme	rdf:type	owl:Class ;
-		rdfs:comment	"Het thema van de foto" ;
-		owl:oneOf	( 	cat:People
+it:Author		rdf:type	rdf:Property ;
+			rdfs:comment	"Marks the person who took the photo"@en ;
+			rdfs:domain	foaf:Person ;
+			rdfs:range	it:DigitalPhoto .
+	
+
+it:Content		rdf:type	rdf:Property ;
+			rdfs:comment	"Describes the contents of the photo"@en ;
+			rdfs:domain	rdfs:Literal ;
+			rdfs:range	it:DigitalPhoto .
+
+it:Theme		rdf:type	rdf:Property ;
+			rdfs:comment	"Shows the theme of the photo"@en ;
+			owl:oneOf	( 	
+					cat:People
 					cat:Animals
 					cat:Architecture
 					cat:Nature
@@ -20,19 +33,29 @@ it:Theme	rdf:type	owl:Class ;
 					cat:Humor
 					cat:Culture
 					cat:News
-				).
+					) ;
+			rdfs:domain	rdfs:Literal ; # Check of dat dit nodig is in combinatie met oneOf restriction. En of een Literal wel de beste benaming hiervoor is.
+			rdfs:range	it:DigitalPhoto .
 
-it:Location	rdf:type	owl:Class ;
-		rdfs:comment	"De plaats waar de foto genomen werd".
+it:Location		rdf:type	rdf:Property ;
+			rdfs:comment	"Shows the location where the photo was taken"@en ;
+			rdfs:domain	ont:Place ; # Marks a place
+			rdfs:range	it:DigitalPhoto .
 
-it:Date		rdf:type	owl:Class ;
-		rdfs:comment	"De datum waarop de foto genomen werd".
+it:Date			rdf:type	rdf:Property ;
+			rdfs:comment	"Marks the date when the photo was taken"@en ;
+			rdfs:domain	xsd:date ;
+			rdfs:range	it:DigitalPhoto .
 
-it:Description	rdf:type	owl:Class ;
-		rdfs:comment	"Dit is een korte beschrijving van de foto".
+it:Description		rdf:type	rdf:Property ;
+			rdfs:comment	"Describes the photo. For a description of the photo's contents, use it:Content"@en ;
+			rdfs:domain	rdfs:Literal ;
+			rdfs:range	it:DigitalPhoto .
 	
-it:Title	rdf:type	owl:Class ;
-		rdfs:comment	"Dit is de titel van de foto".
+it:Title		rdf:type	rdf:Property ;
+			rdfs:comment	"States the title of the photo"@en ;
+			rdfs:domain	rdfs:Literal ;
+			rdfs:range	it:DigitalPhoto .
 
 
 
