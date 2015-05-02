@@ -11,18 +11,18 @@ it:DigitalPhoto		rdf:type	owl:Class ;
 			rdfs:comment	"Class that represents a digital photograph"@en .
 
 
-it:Author		rdf:type	rdf:Property ;
+it:Author		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Marks the person who took the photo"@en ;
 			rdfs:domain	foaf:Person ;
 			rdfs:range	it:DigitalPhoto .
 	
 
-it:Content		rdf:type	rdf:Property ;
+it:Content		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Describes the contents of the photo"@en ;
 			rdfs:domain	rdfs:Literal ;
 			rdfs:range	it:DigitalPhoto .
 
-it:Theme		rdf:type	rdf:Property ;
+it:Theme		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Shows the theme of the photo"@en ;
 			owl:oneOf	( 	
 					cat:People
@@ -34,28 +34,28 @@ it:Theme		rdf:type	rdf:Property ;
 					cat:Culture
 					cat:News
 					) ;
-			rdfs:domain	rdfs:Literal ; # Check of dat dit nodig is in combinatie met oneOf restriction. En of een Literal wel de beste benaming hiervoor is.
 			rdfs:range	it:DigitalPhoto .
 
-it:Location		rdf:type	rdf:Property ;
+it:Location		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Shows the location where the photo was taken"@en ;
 			rdfs:domain	ont:Place ; # Marks a place
 			rdfs:range	it:DigitalPhoto .
 
-it:Date			rdf:type	rdf:Property ;
+it:Date			rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Marks the date when the photo was taken"@en ;
 			rdfs:domain	xsd:date ;
 			rdfs:range	it:DigitalPhoto .
 
-it:Description		rdf:type	rdf:Property ;
+it:Description		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Describes the photo. For a description of the photo's contents, use it:Content"@en ;
 			rdfs:domain	rdfs:Literal ;
 			rdfs:range	it:DigitalPhoto .
 	
-it:Title		rdf:type	rdf:Property ;
+it:Title		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the title of the photo"@en ;
 			rdfs:domain	rdfs:Literal ;
-			rdfs:range	it:DigitalPhoto .
+			rdfs:range	it:DigitalPhoto . # PlainLiteral vs. xsd:string?
+
 
 
 
