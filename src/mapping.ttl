@@ -5,25 +5,25 @@
 it:DigitalPhoto		rdfs:subClassOf		foaf:Image .
 
 
-it:Author		rdfs:subPropertyOf	dc:creator .		
+it:hasAuthor		rdfs:subPropertyOf	dc:creator .		
 	
 
-it:Content		rdfs:subPropertyOf	dc:subject .
+it:hasContent		rdfs:subPropertyOf	dc:subject .
 			
 
-it:Theme		rdfs:subPropertyOf	dc:type .
+it:hasTheme		rdfs:subPropertyOf	dc:type .
 
 
-it:Location		rdfs:subPropertyOf	dc:coverage .
+it:hasLocation		rdfs:subPropertyOf	dc:coverage .
 
 
-it:Date			rdfs:subPropertyOf	dc:date .
+it:hasDate		rdfs:subPropertyOf	dc:date .
 
 
-it:Description		rdfs:subPropertyOf	dc:description .
+it:hasDescription	rdfs:subPropertyOf	dc:description .
 
 	
-it:Title		rdfs:subPropertyOf	dc:title .
+it:hasTitle		rdfs:subPropertyOf	dc:title .
 
 
 

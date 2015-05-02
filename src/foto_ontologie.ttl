@@ -11,21 +11,21 @@ it:DigitalPhoto		rdf:type	owl:Class ;
 			rdfs:comment	"Class that represents a digital photograph"@en .
 
 
-it:Author		rdf:type	owl:ObjectProperty ;
+it:hasAuthor		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Marks the person who took the photo"@en ;
-			rdfs:domain	foaf:Person ;
-			rdfs:range	it:DigitalPhoto .
+			rdfs:domain	it:DigitalPhoto ;
+			rdfs:range	foaf:Person .
 	
 
-it:Content		rdf:type	owl:ObjectProperty ;
+it:hasContent		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Describes the contents of the photo"@en ;
-			rdfs:domain	rdfs:Literal ;
-			rdfs:range	it:DigitalPhoto .
+			rdfs:domain	it:DigitalPhoto ;
+			rdfs:range	rdfs:Literal .
 
-it:Theme		rdf:type	owl:ObjectProperty ;
+it:hasTheme		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Shows the theme of the photo"@en ;
 			owl:oneOf	( 	
-					cat:People
+					cat:People	#TODO: problem: how to apply this to range instead of domain
 					cat:Animals
 					cat:Architecture
 					cat:Nature
@@ -34,30 +34,30 @@ it:Theme		rdf:type	owl:ObjectProperty ;
 					cat:Culture
 					cat:News
 					) ;
-			rdfs:range	it:DigitalPhoto .
+			rdfs:domain	it:DigitalPhoto .
 
-it:Location		rdf:type	owl:ObjectProperty ;
+it:hasLocation		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Shows the location where the photo was taken"@en ;
-			rdfs:domain	ont:Place ; # Marks a place
-			rdfs:range	it:DigitalPhoto .
+			rdfs:domain	it:DigitalPhoto ;
+			rdfs:range	ont:Place ; # Marks a place .
 
-it:Date			rdf:type	owl:ObjectProperty ;
+it:hasDate		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Marks the date when the photo was taken"@en ;
-			rdfs:domain	xsd:date ;
-			rdfs:range	it:DigitalPhoto .
+			rdfs:domain	it:DigitalPhoto ;
+			rdfs:range	xsd:date .
 
-it:Description		rdf:type	owl:ObjectProperty ;
+it:hasDescription		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Describes the photo. For a description of the photo's contents, use it:Content"@en ;
-			rdfs:domain	rdfs:Literal ;
-			rdfs:range	it:DigitalPhoto .
+			rdfs:domain	it:DigitalPhoto ;
+			rdfs:range	rdfs:Literal .
 	
-it:Title		rdf:type	owl:ObjectProperty ;
+it:hasTitle		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the title of the photo"@en ;
-			rdfs:domain	rdfs:Literal ; # PlainLiteral vs. xsd:string?
-			rdfs:range	it:DigitalPhoto . 
+			rdfs:domain	it:DigitalPhoto ;
+			rdfs:range	rdfs:Literal ; # PlainLiteral vs. xsd:string? . 
 
-it:Source		rdf:type	owl:ObjectProperty ;
+it:hasSource		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the location where the photo is stored"@en ;
-			rdfs:range	it:DigitalPhoto . 
+			rdfs:domain	it:DigitalPhoto . 
 
 

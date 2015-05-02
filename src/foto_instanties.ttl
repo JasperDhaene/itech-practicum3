@@ -1,0 +1,23 @@
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+@prefix owl:	<http://www.w3.org/2002/07/owl#>
+@prefix it:	<http:/itech.ugent.be/ontology/17/>
+
+:hugs_cat	rdf:type	it:DigitalPhoto ;
+		it:hasTitle	"Cute kitten wants to give hugs" ;
+		it:hasSource	<http://t2.gstatic.com/images?q=tbn:ANd9GcTM37ryEV5EqfuaTj8AvNeIh0IOy4EoewB0CE4FV5pdOs2XK0_AZQ> .
+
+######################################
+# Potential images (no porn, i swear)
+######################################
+# http://t3.gstatic.com/images?q=tbn:ANd9GcScYvW6DhGD9ACHL8XujogZ4VRgvOtMdAtWd0qxLbjpsbCr55TN3g
+# http://t2.gstatic.com/images?q=tbn:ANd9GcSu4c10TXUVW4DIwbXwVyW1V2oSVl5Ud_hIxhs79IZCM1yIbRyK
+# http://quicklol.com/wp-content/uploads/2012/03/omg-bacon-funny-cat.jpg
+# http://t2.gstatic.com/images?q=tbn:ANd9GcTM37ryEV5EqfuaTj8AvNeIh0IOy4EoewB0CE4FV5pdOs2XK0_AZQ
+# http://www.lolcats.com/images/u/07/32/lolcatsdotcomclu5vrpst727hzii.jpg
+# http://www.roflcat.com/images/cats/Funny_Cat_Lady_Starter_Kit.jpeg
+# http://motleydogs.com/wp-content/uploads/2012/11/funny-cat-photo-with-captions-someone-stealing-poop-from-litter-tray.jpg
+# http://www.mywebroom-blog.com/wp-content/uploads/2014/11/tumblr_m8v643heTV1r6l6x1o1_500.jpg
+# http://www.lolcats.com/images/u/12/24/lolcatsdotcompromdate.jpg
+# https://s-media-cache-ak0.pinimg.com/736x/82/3e/17/823e17200637de1a6eb42c45c7b37fa5.jpg
+# http://www.drodd.com/images11/funny-cat-pictures-with-captions13.jpg
