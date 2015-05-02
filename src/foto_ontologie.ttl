@@ -53,12 +53,11 @@ it:Description		rdf:type	owl:ObjectProperty ;
 	
 it:Title		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the title of the photo"@en ;
-			rdfs:domain	rdfs:Literal ;
-			rdfs:range	it:DigitalPhoto . # PlainLiteral vs. xsd:string?
+			rdfs:domain	rdfs:Literal ; # PlainLiteral vs. xsd:string?
+			rdfs:range	it:DigitalPhoto . 
 
-
-
-
-
+it:Source		rdf:type	owl:ObjectProperty ;
+			rdfs:comment	"States the location where the photo is stored"@en ;
+			rdfs:range	it:DigitalPhoto . 
 
 
