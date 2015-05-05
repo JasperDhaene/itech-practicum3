@@ -23,27 +23,17 @@ html {
  * */
 .jumbotron {
   width: 100%;
-  height: 100%;
+  min-height: calc(100% - 200px);
+
+  color: white;
+  text-align: center;
+
+  padding-top: 100px;
+  padding-bottom: 100px;
 
   background-image: url('/assets/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-/**
- * Alignment
- *
- * */
-.vertical-align-container {
-  display: table;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.vertical-align {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 /**
@@ -54,28 +44,42 @@ html {
   text-align: center;
 }
 
+.margin-top-md {
+  margin-top: 20px;
+}
+
 /**
  * Overlay
  *
  * */
 .overlay {
-  color: white;
-  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 
   padding-top: 100px;
+
+  background: rgba(50, 50, 50, 0.8);
 }
 
-.overlay > h1 {
+/**
+ * Search interface
+ *
+ * */
+.search-interface > h1 {
   font-size: 6em;
   font-weight: 200;
 }
 
-.overlay > h5 {
+.search-interface > h5 {
   font-style: italic;
 }
 
-.overlay .search-container {
+.search-interface .search-container {
   margin-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 ::-webkit-input-placeholder { font-style: italic; }
@@ -83,39 +87,54 @@ html {
 :-ms-input-placeholder { font-style: italic; } /* ie */
 input:-moz-placeholder { font-style: italic; }
 
-.search-box {
-  width: 400px;
+.filter select,
+.filter input[type="text"] {
+  width: 100%;
 }
 
 /* Input */
-.overlay input[type="text"],
-.overlay input[type="text"]:active,
-.overlay input[type="text"]:focus,
-.overlay input[type="text"]:hover {
+.search-interface input[type="text"],
+.search-interface input[type="text"]:active,
+.search-interface input[type="text"]:focus,
+.search-interface input[type="text"]:hover,
+.search-interface select,
+.search-interface select:active,
+.search-interface select:focus,
+.search-interface select:hover {
   border-color: white;
 }
 
-.overlay a.button {
+.search-interface a.button {
   color: white;
   border-color: white;
 }
 
 /* Icon */
 .search-icon {
-  position: absolute;
-  bottom: 15%;
+  margin-top: 60px;
 
   width: 100%;
   text-align: center;
   font-size: 30px;
 }
 
-.search-icon a {
+.search-icon a,
+.search-icon a:active,
+.search-icon a:focus {
   color: white;
 }
 
-.search-icon a:hover,
-.search-icon a:active,
-.search-icon a:focus {
+.search-icon a:hover {
   color: #C4C4C4;
+}
+
+/**
+ * Results
+ *
+ * */
+.results {
+  width: 100%;
+
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
