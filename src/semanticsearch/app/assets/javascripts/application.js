@@ -3,3 +3,9 @@
 //= require turbolinks
 //= require skeleton-extras/skeleton-extras
 //= require_tree .
+
+$(document).ready(function() {
+
+  $('.search-icon').hide();
+
+});
