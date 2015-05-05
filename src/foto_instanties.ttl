@@ -3,7 +3,7 @@
 @prefix owl:	<http://www.w3.org/2002/07/owl#>
 @prefix it:	<http:/itech.ugent.be/ontology/17/>
 
-:hugs_cat	rdf:type	it:DigitalPhoto ;
+it:hugs_cat	rdf:type	it:DigitalPhoto ;
 		it:hasTitle	"Cute kitten wants to give hugs" ;
 		it:hasSource	<http://t2.gstatic.com/images?q=tbn:ANd9GcTM37ryEV5EqfuaTj8AvNeIh0IOy4EoewB0CE4FV5pdOs2XK0_AZQ> .
 

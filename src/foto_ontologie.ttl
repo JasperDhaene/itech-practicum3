@@ -1,8 +1,8 @@
+@prefix it:	<http:/itech.ugent.be/ontology/17/>
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
 @prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 @prefix owl:	<http://www.w3.org/2002/07/owl#>
 @prefix foaf: 	<http://xmlns.com/foaf/0.1/>
-@prefix it:	<http:/itech.ugent.be/ontology/17/>
 @prefix cat:	<http://dbpedia.org/resource/Category:>
 @prefix ont:	<http://dbpedia.org/ontology/>
 @prefix xsd:	<http://www.w3.org/2001/XMLSchema#>
@@ -15,7 +15,7 @@ it:hasAuthor		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Marks the person who took the photo"@en ;
 			rdfs:domain	it:DigitalPhoto ;
 			rdfs:range	foaf:Person .
-	
+
 
 it:hasContent		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Describes the contents of the photo"@en ;
@@ -24,7 +24,7 @@ it:hasContent		rdf:type	owl:ObjectProperty ;
 
 it:hasTheme		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Shows the theme of the photo"@en ;
-			owl:oneOf	( 	
+			owl:oneOf	(
 					cat:People	#TODO: problem: how to apply this to range instead of domain
 					cat:Animals
 					cat:Architecture
@@ -39,7 +39,7 @@ it:hasTheme		rdf:type	owl:ObjectProperty ;
 it:hasLocation		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Shows the location where the photo was taken"@en ;
 			rdfs:domain	it:DigitalPhoto ;
-			rdfs:range	ont:Place ; # Marks a place .
+			rdfs:range	ont:Place . # Marks a place .
 
 it:hasDate		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Marks the date when the photo was taken"@en ;
@@ -50,14 +50,12 @@ it:hasDescription		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Describes the photo. For a description of the photo's contents, use it:Content"@en ;
 			rdfs:domain	it:DigitalPhoto ;
 			rdfs:range	rdfs:Literal .
-	
+
 it:hasTitle		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the title of the photo"@en ;
 			rdfs:domain	it:DigitalPhoto ;
-			rdfs:range	rdfs:Literal ; # PlainLiteral vs. xsd:string? . 
+			rdfs:range	rdfs:Literal . # PlainLiteral vs. xsd:string? .
 
 it:hasSource		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the location where the photo is stored"@en ;
-			rdfs:domain	it:DigitalPhoto . 
-
-
+			rdfs:domain	it:DigitalPhoto .

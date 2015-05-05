@@ -1,3 +1,4 @@
+@prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
 @prefix dc:	<http://purl.org/dc/terms/>
 @prefix foaf: 	<http://xmlns.com/foaf/0.1/>
 @prefix it:	<http:/itech.ugent.be/ontology/17/>
@@ -5,11 +6,11 @@
 it:DigitalPhoto		rdfs:subClassOf		foaf:Image .
 
 
-it:hasAuthor		rdfs:subPropertyOf	dc:creator .		
-	
+it:hasAuthor		rdfs:subPropertyOf	dc:creator .
+
 
 it:hasContent		rdfs:subPropertyOf	dc:subject .
-			
+
 
 it:hasTheme		rdfs:subPropertyOf	dc:type .
 
@@ -22,13 +23,5 @@ it:hasDate		rdfs:subPropertyOf	dc:date .
 
 it:hasDescription	rdfs:subPropertyOf	dc:description .
 
-	
+
 it:hasTitle		rdfs:subPropertyOf	dc:title .
-
-
-
-
-
-
-
-
