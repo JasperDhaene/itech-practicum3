@@ -25,3 +25,6 @@ it:hasDescription	rdfs:subPropertyOf	dc:description .
 
 
 it:hasTitle		rdfs:subPropertyOf	dc:title .
+
+
+it:hasSource		rdfs:subPropertyOf	dc:identifier .

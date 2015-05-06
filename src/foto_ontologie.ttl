@@ -46,7 +46,7 @@ it:hasDate		rdf:type	owl:ObjectProperty ;
 			rdfs:domain	it:DigitalPhoto ;
 			rdfs:range	xsd:date .
 
-it:hasDescription		rdf:type	owl:ObjectProperty ;
+it:hasDescription	rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Describes the photo. For a description of the photo's contents, use it:Content"@en ;
 			rdfs:domain	it:DigitalPhoto ;
 			rdfs:range	rdfs:Literal .
@@ -54,8 +54,9 @@ it:hasDescription		rdf:type	owl:ObjectProperty ;
 it:hasTitle		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the title of the photo"@en ;
 			rdfs:domain	it:DigitalPhoto ;
-			rdfs:range	rdfs:Literal . # PlainLiteral vs. xsd:string? .
+			rdfs:range	rdfs:Literal . # PlainLiteral vs. xsd:string?
 
 it:hasSource		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"States the location where the photo is stored"@en ;
-			rdfs:domain	it:DigitalPhoto .
+			rdfs:domain	it:DigitalPhoto ;
+			rdfs:range	owl:Thing .
