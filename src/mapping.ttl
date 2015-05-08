@@ -1,7 +1,7 @@
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
 @prefix dc:	<http://purl.org/dc/terms/>
 @prefix foaf: 	<http://xmlns.com/foaf/0.1/>
-@prefix it:	<http:/itech.ugent.be/ontology/17/>
+@prefix it:	<http://itech.ugent.be/ontology/17/>
 
 it:DigitalPhoto		rdfs:subClassOf		foaf:Image .
 
