@@ -82,6 +82,18 @@ $(document).ready(function() {
     self.addFilter = function() {
       $('.overlay').fadeIn(FADE_DELAY);
       self.appliedFilters.push(new Filter('title'));
+    };
+    self.search = function() {
+      var params = [];
+      params.push('operator=' + self.operator());
+      $('.filter').each(function() {
+        params.push(encodeURIComponent(
+          $(this).find('[name="filter"] :selected').text().toLowerCase()
+        ) + '=' + encodeURIComponent(
+          $(this).find('[name="value"]').val().toLowerCase()
+        ));
+      });
+      console.log('?' + params.join('&'));
     }
   };
 

@@ -28,7 +28,7 @@
           <div class="row filter">
             <div class="four columns">
               <label class="select">
-                <select class="search-dropdown" data-bind="value: title, options: $parent.filterTypes">
+                <select class="search-dropdown" data-bind="value: title, options: $parent.filterTypes" name="filter">
                 </select>
               </label>
             </div>
@@ -56,7 +56,9 @@
           <!-- /ko -->
         </div>
         <div class="row margin-top-md">
-          <a href="javascript:void(0);" class="button"><i class="fa fa-search"></i> Search</a>
+          <button type="submit" class="button" data-bind="click: search">
+            <i class="fa fa-search"></i> Search
+          </button>
         </div>
       </div>
     </div>
