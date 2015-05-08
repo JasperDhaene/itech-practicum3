@@ -22,12 +22,12 @@ $(document).ready(function() {
   $('#overlay-and-button').click(function(ev) {
     ev.preventDefault();
     document.viewModel.operator('AND');
-    $('.overlay').fadeOut(200);
+    $('#overlay-dialog').fadeOut(200);
   });
   $('#overlay-or-button').click(function(ev) {
     ev.preventDefault();
     document.viewModel.operator('OR');
-    $('.overlay').fadeOut(FADE_DELAY);
+    $('#overlay-dialog').fadeOut(FADE_DELAY);
   });
 
   /**
@@ -35,6 +35,14 @@ $(document).ready(function() {
    *
    * */
   $('.overlay').hide();
+  $('#overlay-image').click(function(){
+    if(e.target == this)
+      $('#overlay-image').hide();
+  });
+
+  $(document).keyup(function(e) {
+    if(e.keyCode == 27) $('.overlay').fadeOut(FADE_DELAY); // Esc
+  });
 
   /**
    * Model
@@ -80,7 +88,7 @@ $(document).ready(function() {
 
     self.operator = ko.observable('OR');
     self.addFilter = function() {
-      $('.overlay').fadeIn(FADE_DELAY);
+      $('#overlay-dialog').fadeIn(FADE_DELAY);
       self.appliedFilters.push(new Filter('title'));
     };
     self.search = function() {
@@ -100,5 +108,12 @@ $(document).ready(function() {
   document.viewModel = new ViewModel();
 
   ko.applyBindings(document.viewModel);
+
+  // Sample result
+  $('#image-link').click(function() {
+    var uri = $(this).children('img').attr('src');
+    $('#overlay-image').find('a').attr('href', uri).find('img').attr('src', uri);
+    $('#overlay-image').fadeIn(200);
+  });
 
 });
