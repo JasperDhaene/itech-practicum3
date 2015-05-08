@@ -2,20 +2,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require skeleton-extras/skeleton-extras
+//= require knockout/knockout
 //= require_tree .
 
 $(document).ready(function() {
 
-  // Display value is key, Dublin Core property is value
-  var filters = {
-    'Theme': 'theme',
-    'Title': 'title',
-    'Author': 'author',
-    'Subject': 'subject'
-  };
+  var FADE_DELAY = 200;
 
-  var operator = 'WTF';
-
+  /**
+   * Page elements
+   *
+   * */
   $('.search-icon > a').click(function(ev) {
       ev.preventDefault();
       $('html, body').animate({ scrollTop: $(document).height() }, 600);
@@ -24,45 +21,72 @@ $(document).ready(function() {
   /* Overlay handling */
   $('#overlay-and-button').click(function(ev) {
     ev.preventDefault();
-    operator = 'AND';
+    document.viewModel.operator('AND');
     $('.overlay').fadeOut(200);
-    addFilter();
-    initDropdown();
   });
   $('#overlay-or-button').click(function(ev) {
     ev.preventDefault();
-    operator = 'OR';
-    $('.overlay').fadeOut(200);
-    addFilter();
-    initDropdown();
+    document.viewModel.operator('OR');
+    $('.overlay').fadeOut(FADE_DELAY);
   });
-
-  var addFilterHandler = function(ev) {
-    ev.preventDefault();
-    $('.overlay').fadeIn(200);
-  }
-
-  var initDropdown = function() {
-    Object.keys(filters).forEach(function(key) {
-      $('.search-dropdown').append('<option value=' + filters[key] + '>' + key + '</option>');
-    });
-  };
-  var template = $('#filter-template').html();
-  var addButtonTemplate = $('#add-button-template').html();
-  var addFilter = function() {
-    $('#search-filter-container').append(template);
-    // Show 'AND' or 'OR'
-    $('.add-button-container').html(operator);
-    // Add 'add' button to the last filter
-    $('.add-button-container').last().html(addButtonTemplate).children('a').click(addFilterHandler);
-  }
 
   /**
    * Initialization
    *
    * */
-  addFilter();
-  initDropdown();
   $('.overlay').hide();
+
+  /**
+   * Model
+   *
+   * */
+  var Filter = function(title) {
+    var self = this;
+
+    self.themeTypes = ko.observableArray([
+      'People',
+      'Animals',
+      'Architecture',
+      'Nature',
+      'Politics',
+      'Humor',
+      'Culture',
+      'News']);
+
+    self.title = ko.observable(title);
+    self.value = ko.observable();
+  };
+
+  /**
+   * ViewModel
+   *
+   * */
+  var ViewModel = function() {
+    var self = this;
+
+    self.filterTypes = ko.observableArray([
+    'Theme',
+    'Description',
+    'Title',
+    'Subject',
+    'Type',
+    'Coverage',
+    'Date',
+    'Creator']);
+
+    self.appliedFilters = ko.observableArray([
+      new Filter('Theme')
+    ]);
+
+    self.operator = ko.observable('OR');
+    self.addFilter = function() {
+      $('.overlay').fadeIn(FADE_DELAY);
+      self.appliedFilters.push(new Filter('title'));
+    }
+  };
+
+  document.viewModel = new ViewModel();
+
+  ko.applyBindings(document.viewModel);
 
 });

@@ -24,5 +24,8 @@ module EventManager
     config.active_record.raise_in_transactional_callbacks = true
     config.quiet_assets = true
 
+    # SPARQL endpoint URI
+    config.sparql_uri = 'http://localhost:11017/dataset/sparql'
+
   end
 end

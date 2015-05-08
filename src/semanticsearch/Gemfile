@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 
+# Ruby + SPARQL
+gem 'sparql-client'
+
 # Rails-assets (Bower resources)
 source 'https://rails-assets.org' do
   gem 'rails-assets-skeleton'
   gem 'rails-assets-skeleton-extras'
   gem 'rails-assets-fontawesome'
+  gem 'rails-assets-knockout'
 end
 
 # validate_timeliness for Rails 4.x

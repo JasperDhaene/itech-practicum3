@@ -1,25 +1,3 @@
-<!-- SEARCH FILTER TEMPLATE -->
-<script type="template" id="filter-template">
-<div class="row filter">
-  <div class="four columns">
-    <label class="select">
-      <select class="search-dropdown"></select>
-    </label>
-  </div>
-  <div class="six columns">
-    <input type="text" placeholder="Search term..." class="search-box">
-  </div>
-  <div class="two columns add-button-container">
-    <!-- ADD BUTTON TEMPLATE GENERATES HERE -->
-  </div>
-</div>
-</script>
-
-<script type="template" id="add-button-template">
-  <a href="javascript:void(0);" class="button add-button"><i class="fa fa-plus"></i></a>
-</script>
-<!-- END SEARCH FILTER TEMPLATE -->
-
 <div class="overlay">
   <div class="row">
     <div class="four columns offset-by-four">
@@ -46,7 +24,36 @@
 
       <div class="container search-container">
         <div id="search-filter-container">
-          <!-- SEARCH FILTER TEMPLATES GENERATE HERE -->
+          <!-- ko foreach: appliedFilters -->
+          <div class="row filter">
+            <div class="four columns">
+              <label class="select">
+                <select class="search-dropdown" data-bind="value: title, options: $parent.filterTypes">
+                </select>
+              </label>
+            </div>
+            <div class="six columns search-input-container">
+              <!-- ko if: (title() === "Theme") -->
+              <label class="select">
+                <select data-bind="value: value, options: themeTypes" name="value">
+                  <option>TEST</option>
+                </select>
+              </label>
+              <!-- /ko -->
+              <!-- ko if: (title() !== "Theme") -->
+                <input type="text" placeholder="Search term..." class="search-box" name="value">
+              <!-- /ko -->
+            </div>
+            <div class="two columns add-button-container">
+              <!-- ko if: ($index() === $parent.appliedFilters().length - 1) -->
+              <a href="javascript:void(0);" class="button add-button" data-bind="click: $parent.addFilter"><i class="fa fa-plus"></i></a>
+              <!-- /ko -->
+              <!-- ko if: ($index() !== $parent.appliedFilters().length - 1) -->
+              <strong><span data-bind="text: $parent.operator"></span></strong>
+              <!-- /ko -->
+            </div>
+          </div>
+          <!-- /ko -->
         </div>
         <div class="row margin-top-md">
           <a href="javascript:void(0);" class="button"><i class="fa fa-search"></i> Search</a>

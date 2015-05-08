@@ -128,6 +128,10 @@ input:-moz-placeholder { font-style: italic; }
   color: #C4C4C4;
 }
 
+.search-input-container select {
+  margin-left: -15px;
+}
+
 /**
  * Results
  *
@@ -137,4 +141,8 @@ input:-moz-placeholder { font-style: italic; }
 
   padding-top: 100px;
   padding-bottom: 100px;
+}
+
+div.select:after {
+  margin-left: -27.5px;
 }
