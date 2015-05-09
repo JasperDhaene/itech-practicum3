@@ -91,7 +91,7 @@
     <!-- ko foreach: results -->
     <div class="row result">
       <div class="two columns">
-        <a href="javascript:void(0);" id="image-link">
+        <a href="javascript:void(0);" data-bind="click: view">
           <!-- Not using thumbnails is a sin, but you're not my mother -->
           <img width="100%" data-bind="attr: { src: identifier }">
         </a>
