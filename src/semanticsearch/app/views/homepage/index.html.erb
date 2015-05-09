@@ -76,31 +76,37 @@
     <div class="search-icon">
       <a href="javascript: void(0);">
         <!-- Replace with fa-circle-o-notch fa-spin when searching -->
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-circle-o-notch fa-spin" data-bind="visible: searching()"></i>
+        <!--<i class="fa fa-angle-down" data-bind="visible: !searching()"></i>-->
       </a>
     </div>
 </div>
 
+<!-- ko if: results().length > 0 -->
 <div class="container">
   <div class="results">
     <div class="row">
+      <h3>Results</h3>
+    </div>
+    <!-- ko foreach: results -->
+    <div class="row result">
       <div class="two columns">
         <a href="javascript:void(0);" id="image-link">
-          <!-- Not using thumbnails is a sin, but whatever -->
-          <img src="http://www.lolcats.com/images/u/12/24/lolcatsdotcompromdate.jpg" width="100%">
+          <!-- Not using thumbnails is a sin, but you're not my mother -->
+          <img width="100%" data-bind="attr: { src: identifier }">
         </a>
       </div>
       <div class="ten columns">
         <div class="row">
-          <strong>Lolcat</strong>
+          <strong data-bind="text: title"></strong>
         </div>
         <div class="row">
           <small><em>JPEG, 490x379px, 44.23KB, extremely cute</em></small>
         </div>
-        <div class="row">
-          Tags: Cute, Funny, Lolcat, WTF
-        </div>
+        <div class="row" data-bind="text: uri"></div>
       </div>
     </div>
+    <!-- /ko -->
   </div>
 </div>
+<!-- /ko -->

@@ -8,33 +8,24 @@
 $(document).ready(function() {
 
   var FADE_DELAY = 200;
+  var SCROLL_DELAY = 600;
 
   /**
    * Page elements
    *
    * */
-  $('.search-icon > a').click(function(ev) {
-      ev.preventDefault();
-      $('html, body').animate({ scrollTop: $(document).height() }, 600);
-  });
 
   /* Overlay handling */
   $('#overlay-and-button').click(function(ev) {
     ev.preventDefault();
     document.viewModel.operator('AND');
-    $('#overlay-dialog').fadeOut(200);
+    $('#overlay-dialog').fadeOut(FADE_DELAY);
   });
   $('#overlay-or-button').click(function(ev) {
     ev.preventDefault();
     document.viewModel.operator('OR');
     $('#overlay-dialog').fadeOut(FADE_DELAY);
   });
-
-  /**
-   * Initialization
-   *
-   * */
-  $('.overlay').hide();
   $('#overlay-image').click(function(){
     if(e.target == this)
       $('#overlay-image').hide();
@@ -45,7 +36,7 @@ $(document).ready(function() {
   });
 
   /**
-   * Model
+   * Models
    *
    * */
   var Filter = function(title) {
@@ -64,6 +55,14 @@ $(document).ready(function() {
     self.title = ko.observable(title);
     self.value = ko.observable();
   };
+
+  var Result = function(result) {
+    var self = this;
+
+    self.uri = result.uri;
+    self.title = result['dc:title'] || 'Untitled image';
+    self.identifier = result['dc:identifier'];
+  }
 
   /**
    * ViewModel
@@ -86,12 +85,18 @@ $(document).ready(function() {
       new Filter('Theme')
     ]);
 
+    // Observables
     self.operator = ko.observable('OR');
+    self.searching = ko.observable(false);
+    self.results = ko.observableArray();
+
+    // Functions
     self.addFilter = function() {
       $('#overlay-dialog').fadeIn(FADE_DELAY);
       self.appliedFilters.push(new Filter('title'));
     };
     self.search = function() {
+      self.searching(true);
       var params = [];
       params.push('operator=' + self.operator());
       $('.filter').each(function() {
@@ -101,11 +106,21 @@ $(document).ready(function() {
           $(this).find('[name="value"]').val().toLowerCase()
         ));
       });
-      console.log('?' + params.join('&'));
+
+      console.log('GET /query?' + params.join('&'));
+
+      $.getJSON('/query?' + params.join('&'), function(data, status) {
+        $.each(data.result, function(key, value) {
+          self.results.push(new Result(value));
+        });
+        self.searching(false);
+        $('html, body').animate({ scrollTop: $('.results').offset().top }, SCROLL_DELAY);
+      });
     }
   };
 
   document.viewModel = new ViewModel();
+  $('.overlay').hide();
 
   ko.applyBindings(document.viewModel);
 
