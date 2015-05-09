@@ -26,9 +26,9 @@ $(document).ready(function() {
     document.viewModel.operator('OR');
     $('#overlay-dialog').fadeOut(FADE_DELAY);
   });
-  $('#overlay-image').click(function(){
-    if(e.target == this)
-      $('#overlay-image').hide();
+  $('#overlay-image').click(function(ev){
+    if(ev.target.nodeName == 'DIV')
+      $('#overlay-image').fadeOut(FADE_DELAY);
   });
 
   $(document).keyup(function(e) {
