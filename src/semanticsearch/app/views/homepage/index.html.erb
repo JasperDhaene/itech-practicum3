@@ -21,7 +21,7 @@
   <div class="row">
     <div class="six columns offset-by-three">
       <a href="javascript:void(0);" target="_blank">
-        <img src="" width="100%" height="100%">
+        <img width="100%" height="100%">
       </a>
     </div>
   </div>
@@ -75,38 +75,34 @@
 
     <div class="search-icon">
       <a href="javascript: void(0);">
-        <!-- Replace with fa-circle-o-notch fa-spin when searching -->
         <i class="fa fa-circle-o-notch fa-spin" data-bind="visible: searching()"></i>
-        <!--<i class="fa fa-angle-down" data-bind="visible: !searching()"></i>-->
       </a>
     </div>
 </div>
 
-<!-- ko if: results().length > 0 -->
 <div class="container">
   <div class="results">
     <div class="row">
-      <h3>Results</h3>
+      <h3><span data-bind="text: results().length"></span> results</h3>
     </div>
     <!-- ko foreach: results -->
     <div class="row result">
       <div class="two columns">
         <a href="javascript:void(0);" data-bind="click: view">
           <!-- Not using thumbnails is a sin, but you're not my mother -->
-          <img width="100%" data-bind="attr: { src: identifier }">
+          <img width="100%" data-bind="attr: { src: fetch('identifier') }">
         </a>
       </div>
       <div class="ten columns">
         <div class="row">
-          <strong data-bind="text: title"></strong>
+          <strong data-bind="text: fetch('title')"></strong>
         </div>
         <div class="row">
           <small><em>JPEG, 490x379px, 44.23KB, extremely cute</em></small>
         </div>
-        <div class="row" data-bind="text: uri"></div>
+        <div class="row" data-bind="text: fetch('uri')"></div>
       </div>
     </div>
     <!-- /ko -->
   </div>
 </div>
-<!-- /ko -->

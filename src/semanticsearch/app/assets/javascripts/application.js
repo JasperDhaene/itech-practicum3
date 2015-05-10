@@ -60,13 +60,16 @@ $(document).ready(function() {
     var self = this;
 
     // Variables (do not have to be observable)
-    self.uri = result.uri;
-    self.title = result['dc:title'] || 'Untitled image';
-    self.identifier = result['dc:identifier'];
+    self.result = result;
+
+    self.fetch = function(property, fallback) {
+      return (self.result[property] ? self.result[property] : fallback);
+    };
 
     // Functions
     self.view = function() {
-      $('#overlay-image').find('a').attr('href', self.identifier).find('img').attr('src', self.identifier);
+      $('#overlay-image').find('a').attr('href', self.fetch('identifier'));
+      $('#overlay-image').find('img').attr('src', self.fetch('identifier'));
       $('#overlay-image').fadeIn(FADE_DELAY);
     };
   }
@@ -117,6 +120,7 @@ $(document).ready(function() {
       console.log('GET /query?' + params.join('&'));
 
       $.getJSON('/query?' + params.join('&'), function(data, status) {
+        self.results.removeAll();
         $.each(data.result, function(key, value) {
           self.results.push(new Result(value));
         });
@@ -128,6 +132,7 @@ $(document).ready(function() {
 
   document.viewModel = new ViewModel();
   $('.overlay').hide();
+  $('html, body').animate({ scrollTop: 0 }, 0);
 
   ko.applyBindings(document.viewModel);
 

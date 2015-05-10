@@ -21,7 +21,7 @@ class QueryController < ApplicationController
   #     limit - limit returned results
   #     offset - offset returned results (use with limit)
   #     operator - possible values: 'or', 'and'
-  #   query parameters:
+  #   query parameters include but are not limited to:
   #     theme - possible values: 'people', 'animals', 'architecture', 'nature', 'politics', 'humor', 'culture', 'news'
   #     description
   #     title
@@ -34,7 +34,7 @@ class QueryController < ApplicationController
     # Result parameters
     limit = params[:limit] ? params[:limit] : @limit
     offset = params[:offset] ? params[:offset] : @offset
-    if params[:operator] == 'OR' || params[:operator] == 'OR'
+    if params[:operator] == 'OR' || params[:operator] == 'AND'
       operator = params[:operator]
     else
       render :status => :bad_request, :text => "Value of parameter 'operator' not allowed"
@@ -46,10 +46,21 @@ class QueryController < ApplicationController
       @query << " PREFIX " + key + ":<" + value + ">"
     end
 
+    # Start of query
     @query << " SELECT * WHERE { " \
           + "?image a ?type. ?type rdfs:subClassOf* foaf:Image. " \
-          + "?image ?property ?value. "\
-          + " } LIMIT #{limit}" \
+          + "?image ?property ?value. "
+
+    # Search parameters
+    if params[:theme]
+      @query << "?image dc:type " \
+                  + "<http://dbpedia.org/resource/Category:" \
+                  + params[:theme].capitalize \
+                  + ">. "
+    end
+
+    # End of query
+    @query << " } LIMIT #{limit}" \
           + " OFFSET #{offset}"
 
     # Use a temporary hashmap to prevent duplicates
@@ -64,11 +75,10 @@ class QueryController < ApplicationController
 
       property = result[:property].to_s
 
-      # Replace URIs by prefix
-      @prefix.each do |key, value|
-        property.gsub! value, key + ":"
+      # Extract only DC terms
+      if property.starts_with?("http://purl.org/dc/terms/")
+        hash[uri][property.split('/').last] = result[:value].to_s
       end
-      hash[uri][property] = result[:value].to_s
 
       result.each_binding do |name, value|
       end
