@@ -9,7 +9,7 @@ class QueryController < ApplicationController
               "rdf" => "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
               "foaf" => "http://xmlns.com/foaf/0.1/",
               "it" => "http://itech.ugent.be/ontology/17/",
-              "dc" => "http://purl.org/dc/terms/"}
+              "dces" => "http://purl.org/dc/elements/1.1/"}
 
     # Default values
     @offset = 0
@@ -21,27 +21,18 @@ class QueryController < ApplicationController
   #     limit - limit returned results
   #     offset - offset returned results (use with limit)
   #     operator - possible values: 'or', 'and'
-  #   query parameters include but are not limited to:
-  #     theme - possible values: 'people', 'animals', 'architecture', 'nature', 'politics', 'humor', 'culture', 'news'
-  #     description
-  #     title
-  #     subject
-  #     type
-  #     coverage
-  #     date
-  #     creator
+  #   query filters include but are not limited to:
+  #     type, description, title, subject, type, coverage, date, creator
+  #   query filters can be literals or URIs, in which case they have to be
+  #   enclosed in <brackets>
   def index
     # Result parameters
     limit = params[:limit] ? params[:limit] : @limit
     offset = params[:offset] ? params[:offset] : @offset
-    if params[:operator] == 'OR' || params[:operator] == 'AND'
-      operator = params[:operator]
-    else
-      render :status => :bad_request, :text => "Value of parameter 'operator' not allowed"
-    end
 
     @query = String.new
 
+    # Add possible prefixes
     @prefix.each do |key, value|
       @query << " PREFIX " + key + ":<" + value + ">"
     end
@@ -51,37 +42,61 @@ class QueryController < ApplicationController
           + "?image a ?type. ?type rdfs:subClassOf* foaf:Image. " \
           + "?image ?property ?value. "
 
-    # Search parameters
-    if params[:theme]
-      @query << "?image dc:type " \
-                  + "<http://dbpedia.org/resource/Category:" \
-                  + params[:theme].capitalize \
-                  + ">. "
+    # Search filters
+    params.each do |key, value|
+      case key
+      when "operator"
+        if value.upcase == 'OR' || value.upcase == 'AND'
+          operator = value
+        else
+          render :status => :bad_request, :text => "Value of parameter 'operator' not allowed"
+        end
+      #~ when "theme"
+        #~ @query << "?image dc:type " \
+                  #~ + "<http://dbpedia.org/resource/Category:" \
+                  #~ + params[:theme].capitalize \
+                  #~ + ">. "
+      when "controller", "action"
+        # Ignore
+      else
+        if value =~ /^<.*>$/
+          # Filter for URIs
+          @query << "?image dces:#{key} #{value}. "
+        else
+          # Filter for literals
+          @query << "?image dces:#{key} ?#{key}. FILTER regex(?#{key}, \x22#{value}\x22). "
+        end
+      end
     end
+
 
     # End of query
     @query << " } LIMIT #{limit}" \
           + " OFFSET #{offset}"
-
+puts @query
     # Use a temporary hashmap to prevent duplicates
     hash = Hash.new
 
-    Rails.application.config.sparql.query(@query).each do |result|
-      # Resource URI
-      uri = result[:image].to_s
+    begin
+      Rails.application.config.sparql.query(@query).each do |result|
+        # Resource URI
+        uri = result[:image].to_s
 
-      hash[uri] || hash[uri] = Hash.new
-      hash[uri]["uri"] = uri
+        # Create a new result entry an populate it
+        hash[uri] || hash[uri] = Hash.new
+        hash[uri]["uri"] = uri
 
-      property = result[:property].to_s
+        # Extract only DC terms
+        property = result[:property].to_s
+        if property.starts_with?("http://purl.org/dc/")
+          hash[uri][property.split('/').last] = result[:value].to_s
+        end
 
-      # Extract only DC terms
-      if property.starts_with?("http://purl.org/dc/")
-        hash[uri][property.split('/').last] = result[:value].to_s
+        result.each_binding do |name, value|
+        end
       end
-
-      result.each_binding do |name, value|
-      end
+    rescue SPARQL::Client::MalformedQuery
+      render :status => :bad_request, :text => "Invalid parameter"
     end
 
     @result = hash.values

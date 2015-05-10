@@ -34,6 +34,9 @@
 
       <div class="container search-container">
         <div id="search-filter-container">
+          <!-- ko if: appliedFilters().length == 0 -->
+            <a href="javascript:void(0);" class="button add-button" data-bind="click: addFilter"><i class="fa fa-plus"></i> add filter</a>
+          <!-- /ko -->
           <!-- ko foreach: appliedFilters -->
           <div class="row filter">
             <div class="four columns">
@@ -45,7 +48,7 @@
             <div class="six columns search-input-container">
               <!-- ko if: (title() === "Theme") -->
               <label class="select">
-                <select data-bind="value: value, options: themes" name="value"></select>
+                <select data-bind="value: value, options: themes, optionsText: 'text', optionsValue: 'value'" name="value"></select>
               </label>
               <!-- /ko -->
               <!-- ko if: (title() !== "Theme") -->
@@ -81,7 +84,7 @@
 <div class="container">
   <div class="results">
     <div class="row">
-      <h3><span data-bind="text: results().length"></span> results</h3>
+      <h3><span data-bind="text: results().length"></span> result<span data-bind="if: results().length > 1">s</span></h3>
     </div>
     <!-- ko foreach: results -->
     <div class="row result">

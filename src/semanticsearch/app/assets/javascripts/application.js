@@ -43,14 +43,14 @@ $(document).ready(function() {
     var self = this;
 
     self.themes = ko.observableArray([
-      'Animals',
-      'People',
-      'Architecture',
-      'Nature',
-      'Politics',
-      'Humor',
-      'Culture',
-      'News']);
+      { text: 'Animals', value: '<http://dbpedia.org/resource/Category:Animals>' },
+      { text: 'People', value: '<http://dbpedia.org/resource/Category:People>' },
+      { text: 'Architecture', value: '<http://dbpedia.org/resource/Category:Architecture>' },
+      { text: 'Nature', value: '<http://dbpedia.org/resource/Category:Nature>' },
+      { text: 'Politics', value: '<http://dbpedia.org/resource/Category:Politics>' },
+      { text: 'Humor', value: '<http://dbpedia.org/resource/Category:Humor>' },
+      { text: 'Culture', value: '<http://dbpedia.org/resource/Category:Culture>' },
+      { text: 'News', value: '<http://dbpedia.org/resource/Category:News>' }]);
 
     self.title = ko.observable(title);
     self.value = ko.observable();
@@ -95,9 +95,7 @@ $(document).ready(function() {
     'Date',
     'Creator']);
 
-    self.appliedFilters = ko.observableArray([
-      new Filter('Theme')
-    ]);
+    self.appliedFilters = ko.observableArray();
 
     // Observables
     self.operator = ko.observable('OR');
@@ -106,8 +104,11 @@ $(document).ready(function() {
 
     // Functions
     self.addFilter = function() {
-      $('#overlay-dialog').fadeIn(FADE_DELAY);
-      self.appliedFilters.push(new Filter('title'));
+      self.appliedFilters.push(
+        new Filter('title')
+      );
+      if(self.appliedFilters().length > 1)
+        $('#overlay-dialog').fadeIn(FADE_DELAY);
     };
     self.search = function() {
       self.searching(true);
@@ -115,9 +116,9 @@ $(document).ready(function() {
       params.push('operator=' + self.operator());
       $('.filter').each(function() {
         params.push(encodeURIComponent(
-          $(this).find('[name="filter"] :selected').text().toLowerCase()
+          $(this).find('[name="filter"] :selected').text().toLowerCase().replace(/theme/, 'type')
         ) + '=' + encodeURIComponent(
-          $(this).find('[name="value"]').val().toLowerCase()
+          $(this).find('[name="value"]').val()
         ));
       });
 

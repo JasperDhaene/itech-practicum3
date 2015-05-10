@@ -1,7 +1,9 @@
 @prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
-@prefix dc:	<http://purl.org/dc/terms/>
+@prefix dces:	<http://purl.org/dc/elements/1.1/>
+@prefix dcmi:	<http://purl.org/dc/dcmitype/>.
 @prefix foaf: 	<http://xmlns.com/foaf/0.1/>
 @prefix it:	<http://itech.ugent.be/ontology/17/>
+@prefix owl:	<http://www.w3.org/2002/07/owl#>
 
 
 #
@@ -11,31 +13,31 @@
 # properties are not mappable.
 #
 
-it:DigitalPhoto		rdfs:subClassOf		dc:Image ;
-			rdfs:subClassOf		foaf:Image .
+it:DigitalPhoto		owl:equivalentClass	dcmi:Image ;
+			owl:equivalentClass	foaf:Image .
 
 # foaf:maker's range is foaf:Agent
-it:hasAuthor		rdfs:subPropertyOf	dc:creator ;
-			rdfs:subPropertyOf	foaf:maker .
+it:hasAuthor		owl:equivalentProperty	dces:creator ;
+			owl:equivalentProperty	foaf:maker .
 
 # foaf:primaryTopic can only have one value
-it:hasContent		rdfs:subPropertyOf	dc:subject ;
-			rdfs:subPropertyOf	foaf:primaryTopic .
+it:hasContent		owl:equivalentProperty	dces:subject ;
+			owl:equivalentProperty	foaf:primaryTopic .
 
-it:hasTheme		rdfs:subPropertyOf	dc:type ;
-			rdfs:subPropertyOf	foaf:topic .
+it:hasTheme		owl:equivalentProperty	dces:type ;
+			owl:equivalentProperty	foaf:topic .
 
 # foaf:based_near is not applicable, because both the domain
 # and range must be Spatial Things.
-it:hasLocation		rdfs:subPropertyOf	dc:coverage .
+it:hasLocation		owl:equivalentProperty	dces:coverage .
 
 # foaf:age is not applicable, because it is an integer
 # indicating _years_ of an _Agent_.
-it:hasDateTime		rdfs:subPropertyOf	dc:date .
+it:hasDateTime		owl:equivalentProperty	dces:date .
 
-it:hasDescription	rdfs:subPropertyOf	dc:description ;
-			rdfs:subPropertyOf	foaf:depicts .
+it:hasDescription	owl:equivalentProperty	dces:description ;
+			owl:equivalentProperty	foaf:depicts .
 
 # foaf:title is *not* a generic title
-it:hasTitle		rdfs:subPropertyOf	dc:title ;
-			rdfs:subPropertyOf	foaf:name .
+it:hasTitle		owl:equivalentProperty	dces:title ;
+			owl:equivalentProperty	foaf:name .
