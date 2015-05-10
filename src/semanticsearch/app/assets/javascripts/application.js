@@ -16,16 +16,6 @@ $(document).ready(function() {
    * */
 
   /* Overlay handling */
-  $('#overlay-and-button').click(function(ev) {
-    ev.preventDefault();
-    document.viewModel.operator('AND');
-    $('#overlay-dialog').fadeOut(FADE_DELAY);
-  });
-  $('#overlay-or-button').click(function(ev) {
-    ev.preventDefault();
-    document.viewModel.operator('OR');
-    $('#overlay-dialog').fadeOut(FADE_DELAY);
-  });
   $('#overlay-image').click(function(ev){
     if(ev.target.nodeName == 'DIV')
       $('#overlay-image').fadeOut(FADE_DELAY);
@@ -98,7 +88,6 @@ $(document).ready(function() {
     self.appliedFilters = ko.observableArray();
 
     // Observables
-    self.operator = ko.observable('OR');
     self.searching = ko.observable(false);
     self.results = ko.observableArray();
 
@@ -107,13 +96,13 @@ $(document).ready(function() {
       self.appliedFilters.push(
         new Filter('title')
       );
-      if(self.appliedFilters().length > 1)
-        $('#overlay-dialog').fadeIn(FADE_DELAY);
     };
+    self.removeFilter = function(filter) {
+      self.appliedFilters.remove(filter);
+    }
     self.search = function() {
       self.searching(true);
       var params = [];
-      params.push('operator=' + self.operator());
       $('.filter').each(function() {
         params.push(encodeURIComponent(
           $(this).find('[name="filter"] :selected').text().toLowerCase().replace(/theme/, 'type')

@@ -45,17 +45,6 @@ class QueryController < ApplicationController
     # Search filters
     params.each do |key, value|
       case key
-      when "operator"
-        if value.upcase == 'OR' || value.upcase == 'AND'
-          operator = value
-        else
-          render :status => :bad_request, :text => "Value of parameter 'operator' not allowed"
-        end
-      #~ when "theme"
-        #~ @query << "?image dc:type " \
-                  #~ + "<http://dbpedia.org/resource/Category:" \
-                  #~ + params[:theme].capitalize \
-                  #~ + ">. "
       when "controller", "action"
         # Ignore
       else
@@ -64,7 +53,7 @@ class QueryController < ApplicationController
           @query << "?image dces:#{key} #{value}. "
         else
           # Filter for literals
-          @query << "?image dces:#{key} ?#{key}. FILTER regex(?#{key}, \x22#{value}\x22). "
+          @query << "?image dces:#{key} ?#{key}. FILTER regex(?#{key}, \x22#{value}\x22, 'i'). "
         end
       end
     end

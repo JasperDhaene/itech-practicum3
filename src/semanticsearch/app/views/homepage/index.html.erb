@@ -1,22 +1,3 @@
-<div class="overlay" id="overlay-dialog">
-  <div class="row">
-    <div class="four columns offset-by-four">
-      <div class="panel">
-        What logical operator do you wish to use? This will apply to <strong>all filters</strong> you add.
-        <hr>
-        <div class="row">
-          <div class="six columns">
-            <a href="javascript:void(0);" class="button u-full-width" id="overlay-and-button">AND</a>
-          </div>
-          <div class="six columns">
-            <a href="javascript:void(0);" class="button u-full-width" id="overlay-or-button">OR</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="overlay" id="overlay-image">
   <div class="row">
     <div class="six columns offset-by-three">
@@ -34,9 +15,6 @@
 
       <div class="container search-container">
         <div id="search-filter-container">
-          <!-- ko if: appliedFilters().length == 0 -->
-            <a href="javascript:void(0);" class="button add-button" data-bind="click: addFilter"><i class="fa fa-plus"></i> add filter</a>
-          <!-- /ko -->
           <!-- ko foreach: appliedFilters -->
           <div class="row filter">
             <div class="four columns">
@@ -56,17 +34,13 @@
               <!-- /ko -->
             </div>
             <div class="two columns add-button-container">
-              <!-- ko if: ($index() === $parent.appliedFilters().length - 1) -->
-              <a href="javascript:void(0);" class="button add-button" data-bind="click: $parent.addFilter"><i class="fa fa-plus"></i></a>
-              <!-- /ko -->
-              <!-- ko if: ($index() !== $parent.appliedFilters().length - 1) -->
-              <strong><span data-bind="text: $parent.operator"></span></strong>
-              <!-- /ko -->
+              <a href="javascript:void(0);" class="button add-button" data-bind="click: $parent.removeFilter"><i class="fa fa-minus"></i></a>
             </div>
           </div>
           <!-- /ko -->
         </div>
         <div class="row margin-top-md">
+          <a href="javascript:void(0);" class="button add-button" data-bind="click: addFilter"><i class="fa fa-plus"></i> add filter</a>
           <button type="submit" class="button" data-bind="click: search">
             <i class="fa fa-search"></i> Search
           </button>
