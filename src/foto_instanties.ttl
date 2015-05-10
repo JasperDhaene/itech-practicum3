@@ -16,7 +16,7 @@
 			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"Hipster Cat"@en ;
 			it:hasTheme		cat:Animals ;
-			it:hasContent		"Just a cute cat with a beanie"@en ;
+			it:hasContent		<http://dbpedia.org/page/Cat>;
 			it:hasAuthor		<http://dbpedia.org/page/Elizabeth_II> .
 
 <http://t2.gstatic.com/images?q=tbn:ANd9GcSu4c10TXUVW4DIwbXwVyW1V2oSVl5Ud_hIxhs79IZCM1yIbRyK>

@@ -45,9 +45,7 @@
             <div class="six columns search-input-container">
               <!-- ko if: (title() === "Theme") -->
               <label class="select">
-                <select data-bind="value: value, options: themeTypes" name="value">
-                  <option>TEST</option>
-                </select>
+                <select data-bind="value: value, options: themes" name="value"></select>
               </label>
               <!-- /ko -->
               <!-- ko if: (title() !== "Theme") -->
@@ -98,9 +96,25 @@
           <a href="" data-bind="attr: { href: fetch('uri') }"><strong data-bind="text: fetch('title', 'Untitled image')"></strong></a>
         </div>
         <div class="row">
-          <small><em><span data-bind="text: category($data)"></span></em></small>
+          <small>
+            <em>
+              <span data-bind="text: clean('type', 'Uncategorized')"></span>
+              <span data-bind="if: fetch('date')">
+                , <span data-bind="text: fetch('date')"></span>
+              </span>
+              <span data-bind="if: fetch('coverage')" class="capitalize">
+                , at <a data-bind="attr: { href: fetch('coverage') }, text: clean('coverage')"></a>
+              </span>
+              <span data-bind="if: fetch('creator')" class="capitalize">
+                , by <a data-bind="attr: { href: fetch('creator') }, text: clean('creator')">author</a>
+              </span>
+            </em>
+          </small>
         </div>
-        <div class="row" data-bind="text: fetch('uri')"></div>
+        <div class="row">
+          <span data-bind="html: fetch('description', '<em>No description available</em>')"></span>
+          <a href="" data-bind="if: fetch('subject'), attr: { href: fetch('subject') }">More details &raquo;</a>
+        </div>
       </div>
     </div>
     <!-- /ko -->

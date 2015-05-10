@@ -42,9 +42,9 @@ $(document).ready(function() {
   var Filter = function(title) {
     var self = this;
 
-    self.themeTypes = ko.observableArray([
-      'People',
+    self.themes = ko.observableArray([
       'Animals',
+      'People',
       'Architecture',
       'Nature',
       'Politics',
@@ -62,20 +62,20 @@ $(document).ready(function() {
     // Variables (do not have to be observable)
     self.result = result;
 
+    // Functions
     self.fetch = function(property, fallback) {
       return (self.result[property] ? self.result[property] : fallback);
     };
-
-    // Functions
     self.view = function() {
       $('#overlay-image').find('a').attr('href', self.fetch('uri'));
       $('#overlay-image').find('img').attr('src', self.fetch('uri'));
       $('#overlay-image').fadeIn(FADE_DELAY);
     };
-    self.category = function() {
-      var category = self.fetch('type', ':Uncategorized').split(':');
-      return category[category.length - 1];
-    };
+    self.clean = function(property, fallback) {
+      var prop = self.fetch(property, fallback);
+      var clean = decodeURIComponent(prop.substr(prop.lastIndexOf('/') + 1));
+      return clean.substr(clean.lastIndexOf(':') + 1).replace(/_/g, ' ');
+    }
   }
 
   /**

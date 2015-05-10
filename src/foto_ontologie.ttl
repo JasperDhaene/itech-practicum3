@@ -22,7 +22,7 @@ it:hasAuthor		rdf:type	owl:ObjectProperty ;
 it:hasContent		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"The contents of the photo"@en ;
 			rdfs:domain	it:DigitalPhoto ;
-			rdfs:range	rdfs:Literal .
+			rdfs:range	owl:Thing .
 
 it:hasTheme		rdf:type	owl:ObjectProperty ;
 			rdfs:comment	"Shows the theme of the photo"@en ;
