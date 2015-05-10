@@ -72,6 +72,10 @@ $(document).ready(function() {
       $('#overlay-image').find('img').attr('src', self.fetch('uri'));
       $('#overlay-image').fadeIn(FADE_DELAY);
     };
+    self.category = function() {
+      var category = self.fetch('type', ':Uncategorized').split(':');
+      return category[category.length - 1];
+    };
   }
 
   /**

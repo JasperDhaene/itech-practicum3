@@ -95,10 +95,10 @@
       </div>
       <div class="ten columns">
         <div class="row">
-          <strong data-bind="text: fetch('title', 'Unknown image')"></strong>
+          <a href="" data-bind="attr: { href: fetch('uri') }"><strong data-bind="text: fetch('title', 'Untitled image')"></strong></a>
         </div>
         <div class="row">
-          <small><em>JPEG, 490x379px, 44.23KB, extremely cute</em></small>
+          <small><em><span data-bind="text: category($data)"></span></em></small>
         </div>
         <div class="row" data-bind="text: fetch('uri')"></div>
       </div>

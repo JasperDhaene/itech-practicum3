@@ -13,7 +13,7 @@ class QueryController < ApplicationController
 
     # Default values
     @offset = 0
-    @limit = 100
+    @limit = 9001
   end
 
   # GET /query
@@ -76,7 +76,7 @@ class QueryController < ApplicationController
       property = result[:property].to_s
 
       # Extract only DC terms
-      if property.starts_with?("http://purl.org/dc/terms/")
+      if property.starts_with?("http://purl.org/dc/")
         hash[uri][property.split('/').last] = result[:value].to_s
       end
 

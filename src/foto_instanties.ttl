@@ -39,14 +39,11 @@
 			it:hasTitle		"I can has prom date?"@en ;
 			it:hasTheme		cat:Animals .
 
-<http://quicklol.com/wp-content/uploads/2012/03/omg-bacon-funny-cat.jpg>
-			rdf:type		it:DigitalPhoto ;
-			it:hasTitle		"OMG!! BACON!!!1!"@en .
-
 <http://geekmontage.com/wp-content/uploads/2011/04/nyancat.png>
 			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN"@nyan ;
 			it:hasDescription	"NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN"@nyan ;
 			it:hasTheme		cat:Animals ;
 			it:hasTheme		cat:Humor ;
-			it:hasAuthor		<https://twitter.com/prguitarman>.
+			it:hasAuthor		<https://twitter.com/prguitarman> ;
+			it:hasDateTime		"2011-04-02" .
