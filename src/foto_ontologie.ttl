@@ -58,11 +58,6 @@ it:hasTitle		rdf:type	owl:ObjectProperty ;
 			rdfs:domain	it:DigitalPhoto ;
 			rdfs:range	rdfs:Literal .
 
-it:hasSource		rdf:type	owl:ObjectProperty ;
-			rdfs:comment	"The location of the digital photo storage"@en ;
-			rdfs:domain	it:DigitalPhoto ;
-			rdfs:range	[ a rdf:uri ] .
-
 it:hasFormat		rdf:type	owl:ObjectProperty ;
 			rdf:comment	"The format of the photo"@en ;
 			rdfs:domain	it:DigitalPhoto ;

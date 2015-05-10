@@ -39,7 +39,3 @@ it:hasDescription	rdfs:subPropertyOf	dc:description ;
 # foaf:title is *not* a generic title
 it:hasTitle		rdfs:subPropertyOf	dc:title ;
 			rdfs:subPropertyOf	foaf:name .
-
-# foaf:page's range is foaf:Document
-it:hasSource		rdfs:subPropertyOf	dc:identifier ;
-			rdfs:subPropertyOf	foaf:page .

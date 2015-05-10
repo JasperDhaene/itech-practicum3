@@ -89,13 +89,13 @@
     <div class="row result">
       <div class="two columns">
         <a href="javascript:void(0);" data-bind="click: view">
-          <!-- Not using thumbnails is a sin, but you're not my mother -->
-          <img width="100%" data-bind="attr: { src: fetch('identifier') }">
+          <!-- Not using thumbnails is a sin, but you're not my mother and this isn't the foaf:Image ontology -->
+          <img width="100%" data-bind="attr: { src: fetch('uri') }">
         </a>
       </div>
       <div class="ten columns">
         <div class="row">
-          <strong data-bind="text: fetch('title')"></strong>
+          <strong data-bind="text: fetch('title', 'Unknown image')"></strong>
         </div>
         <div class="row">
           <small><em>JPEG, 490x379px, 44.23KB, extremely cute</em></small>

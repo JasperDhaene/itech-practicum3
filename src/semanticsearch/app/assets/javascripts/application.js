@@ -68,8 +68,8 @@ $(document).ready(function() {
 
     // Functions
     self.view = function() {
-      $('#overlay-image').find('a').attr('href', self.fetch('identifier'));
-      $('#overlay-image').find('img').attr('src', self.fetch('identifier'));
+      $('#overlay-image').find('a').attr('href', self.fetch('uri'));
+      $('#overlay-image').find('img').attr('src', self.fetch('uri'));
       $('#overlay-image').fadeIn(FADE_DELAY);
     };
   }

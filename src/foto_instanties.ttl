@@ -7,46 +7,46 @@
 @prefix dc:	<http://purl.org/dc/terms/>
 
 
-it:hugs_cat		rdf:type		it:DigitalPhoto ;
+<http://t2.gstatic.com/images?q=tbn:ANd9GcTM37ryEV5EqfuaTj8AvNeIh0IOy4EoewB0CE4FV5pdOs2XK0_AZQ>
+			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"Cute kitten wants to give hugs"@en ;
-			it:hasSource		<http://t2.gstatic.com/images?q=tbn:ANd9GcTM37ryEV5EqfuaTj8AvNeIh0IOy4EoewB0CE4FV5pdOs2XK0_AZQ> ;
 			it:hasDescription	"Sometimes, ya just need to hug someone, ami right?"@en .
 
-it:hipster_cat		rdf:type		it:DigitalPhoto ;
+<http://t3.gstatic.com/images?q=tbn:ANd9GcScYvW6DhGD9ACHL8XujogZ4VRgvOtMdAtWd0qxLbjpsbCr55TN3g>
+			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"Hipster Cat"@en ;
-			it:hasSource		<http://t3.gstatic.com/images?q=tbn:ANd9GcScYvW6DhGD9ACHL8XujogZ4VRgvOtMdAtWd0qxLbjpsbCr55TN3g> ;
 			it:hasTheme		cat:Animals ;
 			it:hasContent		"Just a cute cat with a beanie"@en ;
 			it:hasAuthor		<http://dbpedia.org/page/Elizabeth_II> .
 
-it:puss_in_boots	rdf:type		it:DigitalPhoto ;
-			it:hasSource		<http://t2.gstatic.com/images?q=tbn:ANd9GcSu4c10TXUVW4DIwbXwVyW1V2oSVl5Ud_hIxhs79IZCM1yIbRyK> ;
+<http://t2.gstatic.com/images?q=tbn:ANd9GcSu4c10TXUVW4DIwbXwVyW1V2oSVl5Ud_hIxhs79IZCM1yIbRyK>
+			rdf:type		it:DigitalPhoto ;
 			it:hasTheme		cat:Humor .
 
-it:bacon_cat		rdf:type		it:DigitalPhoto ;
-			it:hasSource		<http://quicklol.com/wp-content/uploads/2012/03/omg-bacon-funny-cat.jpg> ;
+<http://quicklol.com/wp-content/uploads/2012/03/omg-bacon-funny-cat.jpg>
+			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"Cats <3 Bacon"@en ;
 			it:hasDescription	"Bacon is life."@en .
 
-it:fart_cat		rdf:type		it:DigitalPhoto ;
-			it:hasSource		<http://www.lolcats.com/images/u/07/32/lolcatsdotcomclu5vrpst727hzii.jpg> ;
+<http://www.lolcats.com/images/u/07/32/lolcatsdotcomclu5vrpst727hzii.jpg>
+			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"Oops..."@en ;
 			it:hasDescription	"Farts happen"@en ;
 			it:hasTheme		cat:Humor .
 
-it:prom_cat		rdf:type		it:DigitalPhoto ;
-			it:hasSource		<http://www.lolcats.com/images/u/12/24/lolcatsdotcompromdate.jpg> ;
+<http://www.lolcats.com/images/u/12/24/lolcatsdotcompromdate.jpg>
+			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"I can has prom date?"@en ;
 			it:hasTheme		cat:Animals .
 
-it:lolcat		rdf:type		it:DigitalPhoto ;
-			it:hasTitle		"OMG!! BACON!!!1!"@en ;
-			it:hasSource		<http://quicklol.com/wp-content/uploads/2012/03/omg-bacon-funny-cat.jpg> .
+<http://quicklol.com/wp-content/uploads/2012/03/omg-bacon-funny-cat.jpg>
+			rdf:type		it:DigitalPhoto ;
+			it:hasTitle		"OMG!! BACON!!!1!"@en .
 
-it:nyancat		rdf:type		it:DigitalPhoto ;
+<http://geekmontage.com/wp-content/uploads/2011/04/nyancat.png>
+			rdf:type		it:DigitalPhoto ;
 			it:hasTitle		"NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN"@nyan ;
 			it:hasDescription	"NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN NYAN"@nyan ;
-			it:hasSource		<http://geekmontage.com/wp-content/uploads/2011/04/nyancat.png> ;
 			it:hasTheme		cat:Animals ;
 			it:hasTheme		cat:Humor ;
 			it:hasAuthor		<https://twitter.com/prguitarman>.
