@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -jar sparql-endpoint.jar *.ttl --port 11017
+java -jar sparql-endpoint.jar *.ttl *.n3 --port 11017
