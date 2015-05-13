@@ -1,3 +1,25 @@
+<div class="overlay" id="overlay-intro">
+  <div class="row">
+    <div class="six columns offset-by-three">
+      <div class="panel">
+        <h5>Welcome</h5>
+        <p class="justified">
+          Using this application you can search a database of semantically tagged images. This means that you can filter according to the content, theme or other semantic property of the image.
+        </p>
+        <p class="justified">
+          To get started, click the <em>Show all</em> button to show all images in the database, or click on <em>Add filter</em> to add one or more filters to specify. You can add as many filters as you like.
+        </p>
+        <hr>
+        <div class="row">
+          <div class="six columns offset-by-six">
+            <a href="javascript:void(0);" class="button button-primary u-full-width" id="overlay-intro-hide"><i class="fa fa-check"></i> Got it</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="overlay" id="overlay-image">
   <div class="row">
     <div class="six columns offset-by-three">
@@ -42,7 +64,7 @@
         <div class="row margin-top-md">
           <a href="javascript:void(0);" class="button add-button" data-bind="click: addFilter"><i class="fa fa-plus"></i> add filter</a>
           <button type="submit" class="button" data-bind="click: search">
-            <i class="fa fa-search"></i> Search
+            <i class="fa fa-search"></i> <span data-bind="if: (appliedFilters().length == 0)">Show all</span><span data-bind="if: (appliedFilters().length > 0)">Search</span>
           </button>
         </div>
       </div>
@@ -58,7 +80,7 @@
 <div class="container">
   <div class="results">
     <div class="row">
-      <h3><span data-bind="text: results().length"></span> result<span data-bind="if: results().length > 1">s</span></h3>
+      <h3><span data-bind="text: results().length"></span> result<span data-bind="if: results().length != 1">s</span></h3>
     </div>
     <!-- ko foreach: results -->
     <div class="row result">

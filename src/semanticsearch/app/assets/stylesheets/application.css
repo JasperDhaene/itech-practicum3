@@ -166,3 +166,7 @@ div.select:after {
 .capitalize {
   text-transform: capitalize;
 }
+
+.justified {
+  text-align: justify;
+}

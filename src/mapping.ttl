@@ -13,6 +13,19 @@
 # properties are not mappable.
 #
 
+#
+# Please be aware that OWL reasoning must be used here. Using OWL offers
+# the benefit of being able to define equivalent (not equal) classes/properties,
+# whereas RDFS can only define subclasses/-properties. If RDFS is required,
+# replace `owl:equivalentClass` by `rdfs:subClassOf` and `owl:equivalentProperty`
+# by `rdfs:subPropertyOf`. See additional notes in `query_controller.rb`.
+#
+
+#
+# `owl:sameAs` implies both objects are equal (including properties),
+# `owl:equivalentClass` implies both objects are equivalent.
+#
+
 it:DigitalPhoto		owl:equivalentClass	dcmi:Image ;
 			owl:equivalentClass	foaf:Image .
 

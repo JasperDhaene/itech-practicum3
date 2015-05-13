@@ -20,6 +20,9 @@ $(document).ready(function() {
     if(ev.target.nodeName == 'DIV')
       $('#overlay-image').fadeOut(FADE_DELAY);
   });
+  $('#overlay-intro-hide').click(function(ev) {
+    $('#overlay-intro').fadeOut(FADE_DELAY);
+  });
 
   $(document).keyup(function(e) {
     if(e.keyCode == 27) $('.overlay').fadeOut(FADE_DELAY); // Esc
@@ -133,7 +136,7 @@ $(document).ready(function() {
   };
 
   document.viewModel = new ViewModel();
-  $('.overlay').hide();
+  $('#overlay-image').hide();
   $('html, body').animate({ scrollTop: 0 }, 0);
 
   ko.applyBindings(document.viewModel);

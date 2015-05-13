@@ -10,26 +10,14 @@ class QueryController < ApplicationController
               "foaf" => "http://xmlns.com/foaf/0.1/",
               "it" => "http://itech.ugent.be/ontology/17/",
               "dces" => "http://purl.org/dc/elements/1.1/"}
-
-    # Default values
-    @offset = 0
-    @limit = 9001
   end
 
   # GET /query
-  #   result parameters:
-  #     limit - limit returned results
-  #     offset - offset returned results (use with limit)
-  #     operator - possible values: 'or', 'and'
   #   query filters include but are not limited to:
   #     type, description, title, subject, type, coverage, date, creator
   #   query filters can be literals or URIs, in which case they have to be
   #   enclosed in <brackets>
   def index
-    # Result parameters
-    limit = params[:limit] ? params[:limit] : @limit
-    offset = params[:offset] ? params[:offset] : @offset
-
     @query = String.new
 
     # Add possible prefixes
@@ -38,6 +26,12 @@ class QueryController < ApplicationController
     end
 
     # Start of query
+    #
+    # Note: this query assumes OWL is used. When using RDFS, replace the
+    # first statement by:
+    #
+    # `?image a ?type. ?type rdfs:subClassOf* foaf:Image. `
+    #
     @query << " SELECT * WHERE { " \
           + "?image a foaf:Image. " \
           + "?image ?property ?value. "
@@ -48,9 +42,15 @@ class QueryController < ApplicationController
       when "controller", "action"
         # Ignore
       else
-        if value =~ /^<.*>$/
+        if value.blank?
+          # Null-values
+          @query << "?image dces:#{key} ?#{key}. "
+        elsif value =~ /^<.*>$/
           # Filter for URIs
           @query << "?image dces:#{key} #{value}. "
+        elsif value =~ /^[0-9]*$/
+          # Filter for integers
+          @query << "?image dces:#{key} ?#{value}. "
         else
           # Filter for literals
           @query << "?image dces:#{key} ?#{key}. FILTER regex(?#{key}, \x22#{value}\x22, 'i'). "
@@ -58,11 +58,9 @@ class QueryController < ApplicationController
       end
     end
 
-
     # End of query
-    @query << " } LIMIT #{limit}" \
-          + " OFFSET #{offset}"
-puts @query
+    @query << " }"
+
     # Use a temporary hashmap to prevent duplicates
     hash = Hash.new
 
