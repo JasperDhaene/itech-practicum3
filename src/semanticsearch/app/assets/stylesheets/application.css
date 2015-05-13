@@ -92,6 +92,10 @@ input:-moz-placeholder { font-style: italic; }
   width: 100%;
 }
 
+label.select.chromefix {
+  display: table;
+}
+
 div.select:after {
   margin-left: -27.5px;
 }

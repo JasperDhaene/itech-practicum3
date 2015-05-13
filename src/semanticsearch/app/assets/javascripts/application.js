@@ -77,13 +77,21 @@ $(document).ready(function() {
 
     self.filterTypes = ko.observableArray([
     'Theme',
-    'Description',
-    'Title',
-    'Subject',
-    'Type',
+    'Contributor',
     'Coverage',
+    'Creator',
     'Date',
-    'Creator']);
+    'Description',
+    'Format',
+    'Identifier',
+    'Language',
+    'Publisher',
+    'Relation',
+    'Rights',
+    'Source',
+    'Subject',
+    'Title',
+    'Type']);
 
     self.appliedFilters = ko.observableArray();
 

@@ -39,7 +39,7 @@ class QueryController < ApplicationController
 
     # Start of query
     @query << " SELECT * WHERE { " \
-          + "?image a ?type. ?type rdfs:subClassOf* foaf:Image. " \
+          + "?image a foaf:Image. " \
           + "?image ?property ?value. "
 
     # Search filters

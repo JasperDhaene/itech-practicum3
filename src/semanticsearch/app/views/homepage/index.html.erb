@@ -18,14 +18,14 @@
           <!-- ko foreach: appliedFilters -->
           <div class="row filter">
             <div class="four columns">
-              <label class="select">
+              <label class="select u-full-width chromefix">
                 <select class="search-dropdown" data-bind="value: title, options: $parent.filterTypes" name="filter">
                 </select>
               </label>
             </div>
             <div class="six columns search-input-container">
               <!-- ko if: (title() === "Theme") -->
-              <label class="select">
+              <label class="select u-full-width chromefix">
                 <select data-bind="value: value, options: themes, optionsText: 'text', optionsValue: 'value'" name="value"></select>
               </label>
               <!-- /ko -->
