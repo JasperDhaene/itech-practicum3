@@ -20,8 +20,8 @@ $(document).ready(function() {
     if(ev.target.nodeName == 'DIV')
       $('#overlay-image').fadeOut(FADE_DELAY);
   });
-  $('#overlay-intro-hide').click(function(ev) {
-    $('#overlay-intro').fadeOut(FADE_DELAY);
+  $('[data-hide="overlay"]').click(function(ev) {
+    $(this).parents('.overlay').fadeOut(FADE_DELAY);
   });
 
   $(document).keyup(function(e) {
@@ -129,14 +129,21 @@ $(document).ready(function() {
         $.each(data.result, function(key, value) {
           self.results.push(new Result(value));
         });
-        self.searching(false);
         $('html, body').animate({ scrollTop: $('.results').offset().top }, SCROLL_DELAY);
+      })
+      .fail(function(jqXHR, status, error) {
+        $('#overlay-error').fadeIn(FADE_DELAY);
+        $('#text-error').html('HTTP ' + jqXHR.status + ': ' + error);
+      })
+      .always(function() {
+        self.searching(false);
       });
     }
   };
 
   document.viewModel = new ViewModel();
   $('#overlay-image').hide();
+  $('#overlay-error').hide();
   $('html, body').animate({ scrollTop: 0 }, 0);
 
   ko.applyBindings(document.viewModel);

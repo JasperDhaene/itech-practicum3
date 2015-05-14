@@ -46,3 +46,10 @@
 			it:hasTheme		cat:Humor ;
 			it:hasAuthor		<https://twitter.com/prguitarman> ;
 			it:hasDateTime		"2011-04-02" .
+
+<http://static0.hln.be/static/photo/2015/14/13/0/20150512113654/media_xll_7703070.jpg>
+			rdf:type		it:DigitalPhoto ;
+			it:hasTitle		"GREAT SCOTT"@en ;
+			it:hasTheme		cat:Animals ;
+			it:hasTheme		cat:News ;
+			it:hasDateTime		"2015-05-12 11:36:54" .

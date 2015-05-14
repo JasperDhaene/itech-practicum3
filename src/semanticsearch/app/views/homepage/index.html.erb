@@ -4,7 +4,7 @@
       <div class="panel">
         <h5>Welcome</h5>
         <p class="justified">
-          Using this application you can search a database of semantically tagged images. This means that you can filter according to the content, theme or other semantic property of the image.
+          Using this application you can search a database of semantically tagged images. This means that you can filter according to the content, theme or any other semantic property of the image.
         </p>
         <p class="justified">
           To get started, click the <em>Show all</em> button to show all images in the database, or click on <em>Add filter</em> to add one or more filters to specify. You can add as many filters as you like.
@@ -12,7 +12,26 @@
         <hr>
         <div class="row">
           <div class="six columns offset-by-six">
-            <a href="javascript:void(0);" class="button button-primary u-full-width" id="overlay-intro-hide"><i class="fa fa-check"></i> Got it</a>
+            <a href="javascript:void(0);" class="button button-primary u-full-width" data-hide="overlay"><i class="fa fa-check"></i> Got it</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-error">
+  <div class="row">
+    <div class="four columns offset-by-four">
+      <div class="panel">
+        <h5>An error occurred</h5>
+        <p class="justified" id="text-error">
+          An error occurred while displaying the dialog that an error occurred. The universe is going to implode.
+        </p>
+        <hr>
+        <div class="row">
+          <div class="six columns offset-by-six">
+            <a href="javascript:void(0);" class="button button-primary u-full-width" data-hide="overlay"><i class="fa fa-times"></i> Well, shit</a>
           </div>
         </div>
       </div>
